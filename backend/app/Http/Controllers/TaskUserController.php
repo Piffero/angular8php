@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Task;
+use App\TaskUser;
 use App\Http\Requests;
 
-class TaskController extends Controller
+class TaskUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,10 @@ class TaskController extends Controller
      */
     public function index()
     {
-      $emp = Task::all();
-      return json_encode($emp);
+        $emp = TaskUser::all();
+        return json_encode($emp);
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -27,14 +27,14 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-      $emp = new Task;
-      $emp->TasktName = $request->input('TasktName');
-      $emp->TaskDescription = $request->input('TaskDescription');
-      $emp->TaskTime = $request->input('TaskTime');
-      $emp->save();
-      return json_encode('{"success": "true"}');
+        $emp = new TaskUser();
+        $emp->TasktId = $request->input('TasktId');
+        $emp->TaskUserId = $request->input('TaskUserId');
+        $emp->TaskDone = $request->input('TaskDone');
+        $emp->save();
+        return json_encode('{"success": "true"}');
     }
-
+    
     /**
      * Display the specified resource.
      *
@@ -43,13 +43,13 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-       $article = Task::find($id); //id comes from route
-       if( $article ){
-           return json_encode($article);
-       }
-       return json_encode('{"success": "false", "message": "Task Not found"}'); // temporary error
+        $article = TaskUser::find($id); //id comes from route
+        if( $article ){
+            return json_encode($article);
+        }
+        return json_encode('{"success": "false", "message": "Task Not found"}'); // temporary error
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -60,7 +60,7 @@ class TaskController extends Controller
     {
         //
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -70,14 +70,14 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $emp = Task::find($id);
-      $emp->TasktName = $request->input('TasktName');
-      $emp->TaskDescription = $request->input('TaskDescription');
-      $emp->TaskTime = $request->input('TaskTime');
-      $emp->save();
-      return json_encode('{"success": "true"}');
+        $emp = TaskUser::find($id);
+        $emp->TasktId = $request->input('TasktId');
+        $emp->TaskUserId = $request->input('TaskUserId');
+        $emp->TaskDone = $request->input('TaskDone');
+        $emp->save();
+        return json_encode('{"success": "true"}');
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -87,13 +87,13 @@ class TaskController extends Controller
      */
     public function Done(Request $request, $id)
     {
-      $emp = Task::find($id);
-      $emp->TaskDone = $request->input('TaskDone');
-      $emp->save();
-      return json_encode('{"success": "true"}');
+        $emp = TaskUser::find($id);
+        $emp->TaskDone = $request->input('TaskDone');
+        $emp->save();
+        return json_encode('{"success": "true"}');
     }
-
-
+    
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -103,7 +103,7 @@ class TaskController extends Controller
     public function destroy($id)
     {
         //
-        $emp = Task::findOrfail($id);
+        $emp = TaskUser::findOrfail($id);
         if($emp->delete()){
             return  json_encode($emp);
         }
