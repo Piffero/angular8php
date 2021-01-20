@@ -17,14 +17,7 @@ Route::get('/', function () {
 
 Route::get('task', 'TaskController@index');
 Route::get('task/edit/{id}', 'TaskController@show');
-Route::post('task/add', 'TaskController@store');
+Route::post('task/add', 'TaskController@store')->name('task.add');
 Route::put('task/update/{id}', 'TaskController@update');
-Route::put('task/done/{id}', 'TaskController@done');
-Route::delete('task/delete/{id}', 'TaskController@destroy');
-
-Route::get('taskUser', 'TaskUserController@index');
-Route::get('taskUser/edit/{id}', 'TaskUserController@show');
-Route::post('taskUser/add', 'TaskUserController@store');
-Route::put('taskUser/update/{id}', 'TaskUserController@update');
-Route::put('taskUser/done/{id}', 'TaskUserController@done');
-Route::delete('taskUser/delete/{id}', 'TaskUserController@destroy');
+Route::put('task/done/{id}', 'TaskController@done')->name('task.done');
+Route::delete('task/delete/{id}', 'TaskController@destroy')->name('task.delete');

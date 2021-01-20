@@ -26,7 +26,7 @@ class TaskUserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
         $emp = new TaskUser();
         $emp->TasktId = $request->input('TasktId');
         $emp->TaskUserId = $request->input('TaskUserId');

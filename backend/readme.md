@@ -61,5 +61,11 @@ To run all of your outstanding migrations, execute the migrate Artisan command:
 php artisan migrate
 ```
 
+## Running Application
+To run application, execute the PHP command on terminal:
 
+```
+cd <destiny directory of application> 
+php -S localhost:5600 -t public/
+```
 

@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class TaskUser extends Model
 {
-    protected $fillable = ['TasktId', 'TaskUserId', 'TaskDone'];
+    protected $fillable = ['TaskId', 'TaskUserId', 'TaskDone'];
+    
+    public function getDevOfTask($idTask) 
+    {
+        return TaskUser::where('TaskId', $idTask)
+                       ->get();
+    }
 }
